@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
+import AddTasks from './components/AddTasks'
 
 function App() {
     const [tasks, setTasks] = useState([
@@ -40,6 +41,7 @@ function App() {
     return (
         <div className='container'>
             <Header />
+            <AddTasks />
             {tasks.length > 0 ? (
                 <Tasks 
                     tasks={tasks} 
