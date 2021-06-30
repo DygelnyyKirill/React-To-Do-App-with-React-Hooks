@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
 import AddTasks from './components/AddTasks'
+import ButtonServer from './components/ButtonServer'
+import Button from './components/Button'
 
 function App() {
     const [showAddTask, setShowAddTask] = useState(false)
@@ -52,6 +54,7 @@ function App() {
 
     //Delete task
     const deleteTask = (id) => {
+          
         setTasks(tasks.filter((task) => task.id !== id))
     }
 
@@ -78,6 +81,7 @@ function App() {
             ) : (
                 'No Tasks To Show'
             )}
+            <ButtonServer />
         </div>
     )
 }
