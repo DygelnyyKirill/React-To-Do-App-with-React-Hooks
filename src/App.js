@@ -8,30 +8,29 @@ function App() {
     const [tasks, setTasks] = useState([
         // {
         //     id: 1,
-        //     text: 'Doctors Appointment',
+        //     title: 'Doctors Appointment',
         //     day: 'Feb 5th at 2:30pm',
-        //     reminder: true,
+        //     isCompleted: true,
         // },
         // {
         //     id: 2,
-        //     text: 'Meeting at School',
+        //     title: 'Meeting at School',
         //     day: 'Feb 6th at 1:30pm',
-        //     reminder: true,
+        //     isCompleted: true,
         // },
         // {
         //     id: 3,
-        //     text: 'Food Shoping',
+        //     title: 'Food Shoping',
         //     day: 'Feb 5th at 2:30pm',
-        //     reminder: false,
+        //     isCompleted: false,
         // },
     ])
+    console.log('task', tasks)
 
     useEffect(() => {
         const getTasks = async () => {
             const tasksFromServer = await fetchTasks()
             setTasks(tasksFromServer)
-            console.log('taskFrom', tasksFromServer)
-
         }
 
         getTasks()
@@ -40,8 +39,7 @@ function App() {
     const fetchTasks = async () => {
         const res = await fetch('http://localhost:3000/to-dos')
         const data = await res.json()
-        const resData = data.todos[0].listItems[0]
-        // console.log(resData)
+        const resData = data.todos[0].listItems
 
         return resData
     }
@@ -59,8 +57,8 @@ function App() {
 
     const toggleReminder = (id) => {
         setTasks(tasks.map((task) => 
-            task.id === id ? { ...task, reminder: 
-            !task.reminder } : task
+            task.id === id ? { ...task, isCompleted: 
+            !task.isCompleted } : task
             )
         )
     }

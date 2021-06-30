@@ -1,23 +1,23 @@
 import { useState } from 'react'
 
 const AddTasks = ({ onAdd }) => {
-    const [text, setText] = useState('')
+    const [title, setTitle] = useState('')
     const [day, setDay] = useState('')
-    const [reminder, setReminder] = useState(false)
+    const [isCompleted, setIsCompleted] = useState(false)
 
     const onSubmit = (e) => {
         e.preventDefault()
 
-        if (!text) {
+        if (!title) {
             alert('Please add a task')
             return
         }
 
-        onAdd({ text, day, reminder })
+        onAdd({ title, day, isCompleted })
 
-        setText('')
+        setTitle('')
         setDay('')
-        setReminder(false)
+        setIsCompleted(false)
     }
     
     return (
@@ -27,8 +27,8 @@ const AddTasks = ({ onAdd }) => {
                 <input 
                     type='text' 
                     placeholder='Add Tasks'
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                 />
             </div>
             <div className='form-control'>
@@ -44,9 +44,9 @@ const AddTasks = ({ onAdd }) => {
                 <label>Set Remider</label>
                 <input 
                     type='checkbox' 
-                    checked={reminder}
-                    value={reminder}
-                    onChange={(e) => setReminder(e.currentTarget.checked)}
+                    checked={isCompleted}
+                    value={isCompleted}
+                    onChange={(e) => setIsCompleted(e.currentTarget.checked)}
                 />
             </div>
 
