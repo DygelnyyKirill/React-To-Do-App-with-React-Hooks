@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import Header from './components/Header'
+import Footer from './components/Footer'
 import Tasks from './components/Tasks'
 import AddTasks from './components/AddTasks'
 import ButtonServer from './components/ButtonServer'
-import Button from './components/Button'
+
 
 function App() {
     const [showAddTask, setShowAddTask] = useState(false)
@@ -42,6 +43,7 @@ function App() {
         const res = await fetch('http://localhost:3000/to-dos')
         const data = await res.json()
         const resData = data.todos[0].listItems
+        console.log("resData", resData)
 
         return resData
     }
@@ -50,13 +52,20 @@ function App() {
         const id = Math.floor(Math.random() * 10000) + 1
         const newTask = { id, ...task }
         setTasks([ ...tasks, newTask ])
+        console.log('newTags', newTask)
+
+       
+        fetch(`http://localhost:3000/to-dos`, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(task)
+        })
     }
 
     //Delete task
-    const deleteTask = (id) => {
-          
-        setTasks(tasks.filter((task) => task.id !== id))
-    }
+    const deleteTask = (id) => { setTasks(tasks.filter((task) => task.id !== id)) }
 
     const toggleReminder = (id) => {
         setTasks(tasks.map((task) => 
@@ -82,6 +91,7 @@ function App() {
                 'No Tasks To Show'
             )}
             <ButtonServer />
+            <Footer />
         </div>
     )
 }
