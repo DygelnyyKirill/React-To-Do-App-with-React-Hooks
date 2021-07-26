@@ -8,6 +8,7 @@
 
 body {
   font-family: 'Popins', sans-serif;
+  background-color: rgb(251, 252, 242);
 }
 
 .container {
@@ -18,6 +19,8 @@ body {
   border: 1px solid steelblue;
   padding: 30px;
   border-radius: 5px;
+  background-color: rgb(213, 214, 204);
+
 }
 
 .header {

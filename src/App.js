@@ -3,50 +3,14 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Tasks from './components/Tasks'
 import AddTasks from './components/AddTasks'
-import ButtonServer from './components/ButtonServer'
 
 
 function App() {
     const [showAddTask, setShowAddTask] = useState(false)
-    const [tasks, setTasks] = useState([
-        // {
-        //     id: 1,
-        //     title: 'Doctors Appointment',
-        //     day: 'Feb 5th at 2:30pm',
-        //     isCompleted: true,
-        // },
-        // {
-        //     id: 2,
-        //     title: 'Meeting at School',
-        //     day: 'Feb 6th at 1:30pm',
-        //     isCompleted: true,
-        // },
-        // {
-        //     id: 3,
-        //     title: 'Food Shoping',
-        //     day: 'Feb 5th at 2:30pm',
-        //     isCompleted: false,
-        // },
-    ])
+    const [tasks, setTasks] = useState([])
     console.log('task', tasks)
 
-    useEffect(() => {
-        const getTasks = async () => {
-            const tasksFromServer = await fetchTasks()
-            setTasks(tasksFromServer)
-        }
-
-        getTasks()
-    }, [])
-
-    const fetchTasks = async () => {
-        const res = await fetch('http://localhost:3000/to-dos')
-        const data = await res.json()
-        const resData = data.todos[0].listItems
-        console.log("resData", resData)
-
-        return resData
-    }
+  
 
     const addTask = (task) => {
         const id = Math.floor(Math.random() * 10000) + 1
@@ -90,7 +54,6 @@ function App() {
             ) : (
                 'No Tasks To Show'
             )}
-            <ButtonServer />
             <Footer />
         </div>
     )
