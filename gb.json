@@ -7,16 +7,10 @@
       "isCompleted": true
     },
     {
-        "id": 2,
-        "title": "Meeting at School",
-        "day": "Feb 6th at 1:30pm",
-        "isCompleted": true
-    },
-    {
-        "id": 3,
-        "title": "Food Shoping",
-        "day": "Feb 5th at 2:30pm",
-        "isCompleted": false
+      "id": 2,
+      "title": "Meeting at School",
+      "day": "Feb 6th at 1:30pm",
+      "isCompleted": true
     }
   ]
 }
